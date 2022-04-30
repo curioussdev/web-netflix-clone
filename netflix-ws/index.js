@@ -3,4 +3,9 @@ const app = express();
 
 app.get('/', (req, res) => {
     //regra de negócio
+    res.json({ mensagem: "Rota funcionando"})
 });
+
+app.listen(3000, ()=>{
+    console.log("Server Rodando")
+})
