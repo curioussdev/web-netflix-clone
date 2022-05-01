@@ -22,7 +22,7 @@ app.get('/:id', (req, res) => {
 // CRIAR UM REGISTRO
 app.post('/', (req, res) => {
     const body = req.body;
-    res.json(body)
+    res.json({mensagem: "User criado com sucesso"})
 });
 
 //ACTUALIZAR REGISTRO PELO ID
