@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const { json } = require('express');
+
 
 const app = express();
-
-app.use(morgan('dev')) // morgan serve para visualizar as rotas acessadas
+app.use(bodyParser.json()); // serve para ajudar o servidor a recuperar exactamente o que está mandando, no caso do insomnia
+app.use(morgan('dev')); // morgan serve para visualizar as rotas acessadas
 
 
 //RECUPERAR TODOS OS REGISTROS
@@ -23,7 +25,7 @@ app.get('/:id', (req, res) => {
 // CRIAR UM REGISTRO
 app.post('/', (req, res) => {
     const body = req.body;
-    res.json({mensagem: "User criado com sucesso"})
+    res.json(body)
 });
 
 //ACTUALIZAR REGISTRO PELO ID
