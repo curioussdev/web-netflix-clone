@@ -46,9 +46,19 @@ router.post('/', async (req, res) => {
 });
 
 //ACTUALIZAR REGISTRO PELO ID
-router.put('/:id', (req, res) => {
-    const id = req.params.id;
-    res.json({mensagem: ` ACTUALIZAR SOMENTE REGISTROS COM ID ${id}`})
+router.put('/:id', async (req, res) => {
+    try {
+
+        const id = req.params.id;
+        const filme = req.body; // pegando o filme para poder actualizar
+        const filmeActualizado = await Filme.findByIdAndUpdate( id, filme);
+        res.json({ error: false, filmeActualizado});
+
+    } catch (err) {
+        res.json({ error: true, message: err.message })
+    }
+    
+    
 });
 
 //DELE TAR SOMENTE REGISTRO COM ID
