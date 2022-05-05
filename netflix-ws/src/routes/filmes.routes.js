@@ -22,11 +22,11 @@ router.get('/:id', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const filme = req.body;
-        const response = await new Filme(filme).save()
+        const response = await new Filme(filme).save() // salva a colection na BD
         res.json({ error: false, filme: response})
     } catch (err) {
         res.json({ error: true, message: err.message});
-    }
+    };
     
 });
 
