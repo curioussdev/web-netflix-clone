@@ -6,9 +6,14 @@ const Filme = require('../models/filme');
 
 
 //RECUPERAR TODOS OS REGISTROS
-router.get('/', (req, res) => {
-    //Recuperar todos os registros
-    res.json({ mensagem: "PEGAR TODOS OS REGISTROS"})
+router.get('/', async (req, res) => {
+    try {
+        const filmes = await Filme.find({})
+        res.json({ error: false, filmes })
+    } catch (err) {
+        res.json({ error: true, message: err.message })
+    }
+    
 });
 
 
