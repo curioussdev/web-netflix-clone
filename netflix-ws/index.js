@@ -11,7 +11,7 @@ app.use('/', routes);
 
 
 
-routes.pu
+
 
 
 app.listen(3000, ()=>{
