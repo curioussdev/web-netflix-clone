@@ -63,8 +63,17 @@ router.put('/:id', async (req, res) => {
 
 //DELE TAR SOMENTE REGISTRO COM ID
 router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    res.json({mensagem: ` DELETAR SOMENTE REGISTROS COM ID ${id}`})
+    try {
+
+        const id = req.params.id;
+        const deleted = Filme.findByIdAndDelete (id);
+        res.json({ error: false });
+
+    } catch (err) {
+        res.json({ error: true, mensagem: err.message })
+    }
+    
+    
 });
 
 
