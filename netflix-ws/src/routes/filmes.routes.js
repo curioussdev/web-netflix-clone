@@ -8,7 +8,7 @@ const Filme = require('../models/filme');
 //RECUPERAR TODOS OS REGISTROS
 router.get('/', async (req, res) => {
     try {
-        const filmes = await Filme.find({})
+        const filmes = await Filme.find({}) // filtrando todos so filmes do banco
         res.json({ error: false, filmes })
     } catch (err) {
         res.json({ error: true, message: err.message })
@@ -18,9 +18,19 @@ router.get('/', async (req, res) => {
 
 
 // PEGAR SOMENTE REGISTROS OCM ID
-router.get('/:id', (req, res) => {
-    const id = req.params.id; // pegar o id da rota
-    res.json({mensagem: ` PEGAR SOMENTE REGISTROS COM ID ${id}`})
+router.get('/:id', async (req, res) => {
+    try{
+
+        const id = req.params.id; // pegar o id na/da rota
+        const filme = await Filme.findById(id);
+        res.json({ error: false, filme})
+
+    } catch (err) {
+        
+        res.json({ error: true, message: err. message });
+
+    };
+    
 });
 
 // CRIAR UM REGISTRO
