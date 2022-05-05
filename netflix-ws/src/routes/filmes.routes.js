@@ -2,6 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
+//RECUPERAR TODOS OS REGISTROS
+router.get('/', (req, res) => {
+    //Recuperar todos os registros
+    res.json({ mensagem: "PEGAR TODOS OS REGISTROS"})
+});
 
 
 // PEGAR SOMENTE REGISTROS OCM ID

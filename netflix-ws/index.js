@@ -2,20 +2,16 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const { json } = require('express');
-
+const routes = require('./src/routes/filmes.routes')
 
 const app = express();
 app.use(bodyParser.json()); // serve para ajudar o servidor a recuperar exactamente o que está mandando, no caso do insomnia
 app.use(morgan('dev')); // morgan serve para visualizar as rotas acessadas
+app.use('/', routes);
 
 
 
-//RECUPERAR TODOS OS REGISTROS
-app.get('/', (req, res) => {
-    //Recuperar todos os registros
-    res.json({ mensagem: "PEGAR TODOS OS REGISTROS"})
-});
-
+routes.pu
 
 
 app.listen(3000, ()=>{
