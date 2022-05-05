@@ -1,6 +1,8 @@
 
 const express = require('express');
 const router = express.Router();
+const Filme = require('../models/filme');
+
 
 //RECUPERAR TODOS OS REGISTROS
 router.get('/', (req, res) => {
