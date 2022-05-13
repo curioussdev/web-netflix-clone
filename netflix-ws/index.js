@@ -1,11 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const database = require('./src/services/database');
 
-const routes = require('./src/routes/filmes.routes')
-const mongoose = require('mongoose'); // é uma ferramenta/camada js para trabalhar com o mongoDB
-
-mongoose.connect('mongodb://localhost:27017/netflix');
+const routes = require('./src/routes/filmes.routes');
 
 const app = express();
 app.use(bodyParser.json()); // serve para ajudar o servidor a recuperar exactamente o que está mandando, no caso do insomnia
