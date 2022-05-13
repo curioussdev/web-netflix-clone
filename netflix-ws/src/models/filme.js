@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 
 
 const Filme = mongoose.model('Filme', {
-    titulo: {
-        type: String,
-        required: true, // impede que se insere o campo  título vazio na BD
-    },
-    atores: Array,
-    ano: Number,
-    detalhes: Object,
-    premiacoes: [Object],
+    titulo: String,
+    tipo: String,
+    capa: String,
+    logo: String,
+    thumb: String,
+    descricao: String,
+    elenco: Array,
+    genero: Array,
+    cenas_momentos: Array
 });
 
 module.exports = Filme;
