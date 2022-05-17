@@ -3,8 +3,9 @@ const router = express.Router();
 const Filme = require('../models/filme');
 const Temporada = require('../models/temporada');
 const _ = require('underscore'); // para misturar aleatoriamente os resultados
-//RECUPERAR TELA HOME
 
+
+//RECUPERAR TELA HOME
 router.get('/home', async (req, res) => {
     try {   
 
