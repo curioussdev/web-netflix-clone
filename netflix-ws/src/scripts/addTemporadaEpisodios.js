@@ -33,9 +33,9 @@ const addTemporadaEpisodios = async () => {
                 }
             }
         }
-        console.log('Final do Script')
+        console.log('Final do Script');
     } catch (err) {
-        console.log(err.message)
+        console.log(err.message);
     }
 }; 
 
