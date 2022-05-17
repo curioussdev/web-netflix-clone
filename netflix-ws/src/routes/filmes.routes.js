@@ -1,7 +1,43 @@
-
 const express = require('express');
 const router = express.Router();
 const Filme = require('../models/filme');
+const Temporada = require('../models/temporada');
+const _ = require('underscore'); // para misturar aleatoriamente os resultados
+//RECUPERAR TELA HOME
+
+router.get('/home', async (req, res) => {
+    try {   
+
+        // Recuperar filmes
+        let filmes = await Filme.find({}); // pega todos os filmes na BD
+        let finalFilmes = [];
+
+        //Recuperar temporadas
+        for(let filme of filmes) {
+            const temporadas = await Temporada.find({
+                filme_id: filme._id
+            });
+
+            const newFilme = { ...filme._doc, temporadas}; // pegar todos os filmes e temporadas como doc
+            finalFilmes.push(newFilme); 
+        };
+
+        //misturar resultados aleatóriamente com a lib underscore
+        finalFilmes = _.shuffle(finalFilmes); // mistura aleatoriamente os objecto do finalFilmes
+
+        //Filme principal da capa
+        const principal = finalFilmes[0]; 
+
+        // separar linha de filmes (sessões)
+        const sessoes = _.chunk(finalFilmes, 5); // o chunck serve para limitar a quantidade de elementos no array, e cria outro array para colocar o restante dos elementos definidos
+
+        res.json({ error: false, principal, sessoes});
+
+    } catch(err) {
+        res.json({error: true, message: err.message});
+    }
+});
+
 
 
 
